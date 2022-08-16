@@ -1,0 +1,29 @@
+{
+  "name": "scf-test",
+  "version": "0.0.2",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.viavarejo.com.br/repository/npm-private"
+  },
+  "scripts": {
+    "cy:test": "cypress run --config video=false --env",
+    "cy:open": "cypress open",
+    "cy:dash": "npx cypress run --record --key {secrets_dash}",
+    "allure:report": "allure generate --clean allure-results && allure open"
+  },
+  "keywords": [
+    "cypress",
+    "tests",
+    "cucumber",
+    "github-actions"
+  ],
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "2.23.0",
+    "cypress": "10.4.0",
+    "cypress-grep": "2.13.1",
+    "cypress-xpath": "1.6.2",
+    "faker-br": "^0.4.1"
+  }
+}
