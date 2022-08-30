@@ -1,0 +1,15 @@
+[
+    {
+        "email" : "fabio@teste.com",
+        "senha" : "teste@123"
+    }, 
+    {
+        "email" : "fabio@bootcamp.com", 
+        "senha" : "teste@123"
+    }, 
+    {
+        "email" : "fabio@boot.com", 
+        "senha" : "teste@123", 
+        "perfil" : "admin"
+    }
+]

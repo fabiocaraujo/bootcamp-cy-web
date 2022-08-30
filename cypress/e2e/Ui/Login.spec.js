@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import usuarios from "../../fixtures/usuarios.json"
 
 describe('US0001 - Funcionalidade: Login', () => {
 
@@ -9,11 +10,25 @@ describe('US0001 - Funcionalidade: Login', () => {
     it('Deve fazer login com sucesso', () => {
         cy.login('fabio@bootcamp.com', 'teste@123')
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo Fabio Araújo')
+        cy.title().should('eq', 'ConexaoQA')
     });
 
     it('Validar mensagem de erro quando inserir usuário ou senha inválidos', () => {
-        cy.login('fabioddfd@bootcamp.com', 'testefddfd@123')
+        cy.login('fabio@fd.com', 'teste@123')
+        cy.get('[data-test="login-submit"]').click()
         cy.get('[data-test="alert"]').should('contain', 'Credenciais inválidas')
+    });
+
+    it.only('Deve fazer login com sucesso - Usando importação', () => {
+        cy.login(usuarios[0].email, usuarios[0].senha)
+        cy.title().should('eq', 'ConexaoQA')
+    });
+
+    it('Deve fazer login com sucesso - Usando fixture', () => {
+        cy.fixture("usuarios").then((user) => {
+            cy.login(user[1].email, user[1].senha)
+        })
+        cy.title().should('eq', 'ConexaoQA')
     });
 });
 
